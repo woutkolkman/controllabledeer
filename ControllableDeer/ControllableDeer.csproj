@@ -71,9 +71,6 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\references\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\references\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

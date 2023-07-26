@@ -6,11 +6,8 @@ namespace ControllableDeer
     {
         public static void Apply()
         {
-            //at tickrate
-            On.RainWorldGame.Update += RainWorldGameUpdateHook;
-
-            //at framerate
-            On.RainWorldGame.RawUpdate += RainWorldGameRawUpdateHook;
+            //overwrite deer AI input
+            On.DeerAI.Update += DeerAIUpdateHook;
         }
 
 
@@ -20,35 +17,31 @@ namespace ControllableDeer
         }
 
 
-        //at tickrate
-        static void RainWorldGameUpdateHook(On.RainWorldGame.orig_Update orig, RainWorldGame self)
+        //deer AI input
+        static void DeerAIUpdateHook(On.DeerAI.orig_Update orig, DeerAI self)
         {
             orig(self);
 
-            if (self?.world?.activeRooms?.Count <= 0)
-                return;
+            Player p = null;
 
-            foreach (Room room in self.world.activeRooms)
-            {
-                for (int i = 0; i < room?.physicalObjects?.Length; i++)
-                {
-                    for (int j = 0; j < room.physicalObjects[i].Count; j++)
-                    {
-                        PhysicalObject obj = room.physicalObjects[i][j];
-                        if (!(obj is Deer))
-                            continue;
+            //get first non-NPC player in antlers with valid input
+            if (self.deer?.playersInAntlers?.Count > 0) {
+                foreach (Deer.PlayerInAntlers dpia in self.deer.playersInAntlers) {
+                    if (dpia.player?.input?.Length > 0 && !dpia.player.isNPC && 
+                        (dpia.player.input[0].x != 0 || dpia.player.input[0].y != 0)) {
+                        p = dpia.player;
+                        break;
                     }
                 }
             }
-        }
 
-
-        //at framerate
-        static void RainWorldGameRawUpdateHook(On.RainWorldGame.orig_RawUpdate orig, RainWorldGame self, float dt)
-        {
-            orig(self, dt);
-            if (self.GamePaused || self.pauseUpdate || !self.processActive || self.pauseMenu != null)
-                return;
+            //affects walk direction
+            if (p != null) {
+                WorldCoordinate target = self.deer.coord;
+                target.x += p.input[0].x * 10;
+                target.y += p.input[0].y * 10;
+                self.inRoomDestination = target;
+            }
         }
     }
 }
