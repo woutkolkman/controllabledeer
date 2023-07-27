@@ -30,7 +30,6 @@ namespace ControllableDeer
 
             Logger = base.Logger;
             Hooks.Apply();
-            Patches.Apply();
 
             GUID = Info.Metadata.GUID;
             Name = Info.Metadata.Name;
@@ -47,7 +46,6 @@ namespace ControllableDeer
             IsEnabled = false;
 
             Hooks.Unapply();
-            Patches.Unapply();
 
             Plugin.Logger.LogInfo("OnDisable called");
         }
