@@ -1,7 +1,7 @@
 Makes Rain Deer less of a PITA.
 
 [h3]Description[/h3]
-If you're in the antlers, a Rain Deer will move towards the direction pointed to by your movement keys. If you do nothing, the AI takes over again. Supports Jolly Co-op (first player in the antlers will have priority control). 
+Once you're in the antlers, a Rain Deer will move into the direction pointed to by your movement keys. If you do nothing, the AI takes over again. Supports Jolly Co-op (first player that reached the antlers will have priority control). 
 
 Source code is here: https://github.com/woutkolkman/controllabledeer 
 

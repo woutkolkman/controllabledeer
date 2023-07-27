@@ -17,7 +17,7 @@ namespace ControllableDeer
         }
 
 
-        //deer AI input
+        //overwrite deer AI input
         static void DeerAIUpdateHook(On.DeerAI.orig_Update orig, DeerAI self)
         {
             orig(self);
