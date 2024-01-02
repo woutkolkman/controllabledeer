@@ -12,8 +12,10 @@ namespace ControllableDeer
 
 
         //overwrite deer AI input
+        public static int modPaused = 0;
         static void DeerAIUpdateHook(On.DeerAI.orig_Update orig, DeerAI self)
         {
+            bool lastLPIA = self.lastPlayerInAntlers;
             orig(self);
 
             Player p = null;
@@ -27,6 +29,16 @@ namespace ControllableDeer
                         break;
                     }
                 }
+            }
+            if (!self.lastPlayerInAntlers)
+                return;
+            if (!lastLPIA)
+                modPaused = 40;
+            //temporarily pausing the mod gives the option to still ride the deer to its original destination
+            //TODO, not a major issue, pausing the mod affects control for all deer
+            if (modPaused > 0) {
+                modPaused--;
+                return;
             }
             if (p == null)
                 return;
