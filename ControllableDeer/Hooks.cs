@@ -35,7 +35,6 @@ namespace ControllableDeer
             if (p.input[0].y > 0) {
                 if (self.deer.mainBodyChunk != null)
                     self.deer.mainBodyChunk.vel += new Vector2(0f, 1f); //get unstuck
-                self.deer.resting = 0f;
                 if (self.stuckTracker != null)
                     self.stuckTracker.satisfiedWithThisPosition = false;
             }
@@ -44,10 +43,15 @@ namespace ControllableDeer
             target.y += p.input[0].y * 5;
             self.inRoomDestination = target;
 
-            //prevent bowing
+            //prevent bowing and resting
             if (p.input[0].x != 0 || p.input[0].y != 0) {
                 self.deerPileCounter = 80;
                 self.kneelCounter = 0;
+                self.deer.hesistCounter = 0;
+                self.minorWanderTimer = 0;
+                self.layDownAndRestCounter = 0;
+                self.restingCounter = 0;
+                self.deer.resting = 0f;
             }
         }
     }
