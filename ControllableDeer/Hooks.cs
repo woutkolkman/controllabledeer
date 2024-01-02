@@ -65,6 +65,13 @@ namespace ControllableDeer
                 self.restingCounter = 0;
                 self.deer.resting = 0f;
             }
+
+            /*//jump forwards on command
+            if (p.input[0].pckp) {
+                if (self.stuckTracker != null)
+                    self.stuckTracker.stuckCounter = int.MaxValue;
+                self.behavior = DeerAI.Behavior.GetUnstuck;
+            }*/
         }
     }
 }
