@@ -11,12 +11,6 @@ namespace ControllableDeer
         }
 
 
-        public static void Unapply()
-        {
-            //TODO
-        }
-
-
         //overwrite deer AI input
         static void DeerAIUpdateHook(On.DeerAI.orig_Update orig, DeerAI self)
         {
@@ -34,20 +28,26 @@ namespace ControllableDeer
                     }
                 }
             }
+            if (p == null)
+                return;
 
             //affects walk direction
-            if (p != null) {
-                if (p.input[0].y > 0) {
-                    if (self.deer.mainBodyChunk != null)
-                        self.deer.mainBodyChunk.vel += new Vector2(0f, 1f); //get unstuck
-                    self.deer.resting = 0f;
-                    if (self.stuckTracker != null)
-                        self.stuckTracker.satisfiedWithThisPosition = false;
-                }
-                WorldCoordinate target = self.deer.coord;
-                target.x += p.input[0].x * 5;
-                target.y += p.input[0].y * 5;
-                self.inRoomDestination = target;
+            if (p.input[0].y > 0) {
+                if (self.deer.mainBodyChunk != null)
+                    self.deer.mainBodyChunk.vel += new Vector2(0f, 1f); //get unstuck
+                self.deer.resting = 0f;
+                if (self.stuckTracker != null)
+                    self.stuckTracker.satisfiedWithThisPosition = false;
+            }
+            WorldCoordinate target = self.deer.coord;
+            target.x += p.input[0].x * 5;
+            target.y += p.input[0].y * 5;
+            self.inRoomDestination = target;
+
+            //prevent bowing
+            if (p.input[0].y != 0 || p.input[0].x != 0) {
+                self.deerPileCounter = 80;
+                self.kneelCounter = 0;
             }
         }
     }
