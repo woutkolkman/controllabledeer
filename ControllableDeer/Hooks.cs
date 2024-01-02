@@ -45,7 +45,7 @@ namespace ControllableDeer
             self.inRoomDestination = target;
 
             //prevent bowing
-            if (p.input[0].y != 0 || p.input[0].x != 0) {
+            if (p.input[0].x != 0 || p.input[0].y != 0) {
                 self.deerPileCounter = 80;
                 self.kneelCounter = 0;
             }
