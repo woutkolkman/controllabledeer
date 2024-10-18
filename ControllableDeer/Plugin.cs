@@ -45,6 +45,8 @@ namespace ControllableDeer
             if (!IsEnabled) return;
             IsEnabled = false;
 
+            Hooks.Unapply();
+
             Plugin.Logger.LogInfo("OnDisable called");
         }
     }

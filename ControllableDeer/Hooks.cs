@@ -11,6 +11,12 @@ namespace ControllableDeer
         }
 
 
+        public static void Unapply()
+        {
+            On.DeerAI.Update -= DeerAIUpdateHook;
+        }
+
+
         //overwrite deer AI input
         static void DeerAIUpdateHook(On.DeerAI.orig_Update orig, DeerAI self)
         {
