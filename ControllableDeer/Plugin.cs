@@ -31,9 +31,9 @@ namespace ControllableDeer
             Logger = base.Logger;
             Hooks.Apply();
 
-            GUID = Info.Metadata.GUID;
-            Name = Info.Metadata.Name;
-            Version = Info.Metadata.Version.ToString();
+            GUID = Info?.Metadata?.GUID;
+            Name = Info?.Metadata?.Name;
+            Version = Info?.Metadata?.Version?.ToString();
 
             Plugin.Logger.LogInfo("OnEnable called");
         }
