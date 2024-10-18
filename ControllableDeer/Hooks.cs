@@ -71,6 +71,8 @@ namespace ControllableDeer
                 self.layDownAndRestCounter = 0;
                 self.restingCounter = 0;
                 self.deer.resting = 0f;
+                self.sporePos = null;
+                self.goToPuffBall = null;
             }
 
             /*//jump forwards on command
