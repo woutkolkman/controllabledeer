@@ -9,7 +9,7 @@ using System.Security.Permissions;
 namespace ControllableDeer
 {
     //also edit version in "modinfo.json"
-    [BepInPlugin("maxi-mol.controllabledeer", "Controllable Deer", "0.1.1")] //(GUID, mod name, mod version)
+    [BepInPlugin("maxi-mol.controllabledeer", "Controllable Deer", "0.1.2")] //(GUID, mod name, mod version)
     public class Plugin : BaseUnityPlugin
     {
         public static new ManualLogSource Logger { get; private set; } = null;
