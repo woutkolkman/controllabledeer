@@ -1,7 +1,7 @@
 {
   "id": "maxi-mol.controllabledeer",
   "name": "Controllable Deer",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "authors": "Maxi Mol",
   "description": "Control Rain Deer using your movement keys.",
   "requirements": [],

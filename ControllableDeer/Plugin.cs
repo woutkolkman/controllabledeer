@@ -1,5 +1,4 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using System.Security.Permissions;
 #pragma warning disable CS0618
@@ -9,7 +8,7 @@ using System.Security.Permissions;
 namespace ControllableDeer
 {
     //also edit version in "modinfo.json"
-    [BepInPlugin("maxi-mol.controllabledeer", "Controllable Deer", "0.1.2")] //(GUID, mod name, mod version)
+    [BepInPlugin("maxi-mol.controllabledeer", "Controllable Deer", "1.0.0")] //(GUID, mod name, mod version)
     public class Plugin : BaseUnityPlugin
     {
         public static new ManualLogSource Logger { get; private set; } = null;
